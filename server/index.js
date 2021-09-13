@@ -2,7 +2,7 @@
 
 const dotenv = require("dotenv");
 const service = require("./service");
-const throng = require("throng");
+// const throng = require("throng");
 
 dotenv.config();
 
@@ -12,17 +12,17 @@ const options = {
 	workers: process.env.WEB_CONCURRENCY || 1
 };
 
-throng({
-	workers: options.workers,
-	start: startWorker
-});
+// throng({
+// 	workers: options.workers,
+// 	start: startWorker
+// });
 
-function startWorker(id) {
-	console.log(`Started worker ${id}`);
+// function startWorker(id) {
+	// console.log(`Started worker ${id}`);
 	service(options)
 		.listen()
 		.catch(() => {
 			// eslint-disable-next-line unicorn/no-process-exit
 			process.exit(1);
 		});
-}
+// }
